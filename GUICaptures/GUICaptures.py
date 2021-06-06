@@ -16,6 +16,8 @@ import csv
 import wikipedia
 import pathlib
 
+from nltk.tokenize import sent_tokenize
+
 
 from nltk.corpus import words
 import nltk
@@ -32,15 +34,10 @@ corpus_name = "corpus"
 toaster = ToastNotifier()
 toaster.show_toast("EdPex","EdPex is up and running")   
 
+
+
+
 def getanswer(corpus, query):
-    
-    # Calculate IDF values across files
-    files = load_files(corpus)
-    file_words = {
-        filename: tokenize(files[filename])
-        for filename in files
-    }
-    file_idfs = compute_idfs(file_words)
 
     # Prompt user for query
     query = set(tokenize(query))
@@ -173,6 +170,13 @@ def top_sentences(query, sentences, idfs, n):
 
 
 
+# Calculate IDF values across files
+files = load_files(corpus_name)
+file_words = {
+    filename: tokenize(files[filename])
+    for filename in files
+}
+file_idfs = compute_idfs(file_words)
 
 
 
@@ -211,6 +215,7 @@ def check_text(result):
                 current_phrase = []
             skipped = 0
         
+    
     print(all_phrases)
 
     for phrase in all_phrases:

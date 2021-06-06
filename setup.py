@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='GUICaptures',
-    version='0.1.3',    
+    version='0.1.1',    
     description='Answering questions using NLTK and screen captures',
     long_description="Read the wiki at ",
     url='https://github.com/Sam-Nielsen-Dot/GUICaptures',
